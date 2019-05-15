@@ -27,7 +27,12 @@ $date_versement = date('d-m-Y', strtotime($_POST['date_versement']));
 $cgi = $_POST["cgi"];
 $forme_du_don = $_POST["forme_du_don"];
 $nature_du_don = $_POST["nature_du_don"];
-$don_numeraire = $_POST["don_numeraire"];
+
+//Vérification si il y a un don numeraire
+if(isset($_POST["don_numeraire"])){
+    $don_numeraire = $_POST["don_numeraire"];  
+}
+
 
 
 
@@ -37,7 +42,7 @@ $pdf = new Fpdi();
 // add a page
 $pdf->AddPage();
 // set the source file
-$pdf->setSourceFile('monpdf2.pdf');
+$pdf->setSourceFile('monpdf.pdf');
 // import de la page 1
 $tplIdx = $pdf->importPage(1);
 // use the imported page and place it at position 10,10 with a width of 100 mm
@@ -222,7 +227,8 @@ $pdf->SetXY(35,57);
 $pdf->Write(0,$code_postal_donateur);
 
 //Ville
-$pdf->SetXY(86,57);
+$pdf->SetXY(86,57
+);
 $pdf->Write(0,$ville_donateur);
 
 //Sommz
@@ -289,7 +295,7 @@ switch ($nature_du_don) {
         $pdf->SetXY(12,171);
         $pdf->Write(0, $nature_du_don);
         //En cas de con numéraire
-        switch($_POST['don_numeraire']) // la valeur de b est 1
+        switch(isset($_POST['don_numeraire']))
         {   case 1:
                 $don_numeraire = "X";
                 $pdf->SetXY(12,192.5);

@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST["enregistrer"])){
-    if(isset($_POST) && !empty($_POST["nom"]) && !empty($_POST["num_recu"]) && !empty($_POST["ville"])){
+    if(isset($_POST) && !empty($_POST["nom"]) && !empty($_POST["num_recu"]) && !empty($_POST["nom_donateur"])){
 
         $num_recu = htmlspecialchars(trim(addslashes($_POST["num_recu"])));
         $nom = htmlspecialchars(trim(addslashes($_POST["nom"])));
@@ -235,13 +235,13 @@ if(isset($_POST["enregistrer"])){
             <div class="form-row">
                 <div class="form-group">
                     <label for="nom">Nom</label>
-                    <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" name="nom_donateur" >
+                    <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" name="nom_donateur" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="prenom">Prenom</label>
-                    <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prenom" name="prenom_donateur" > 
+                    <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prenom" name="prenom_donateur" required> 
                 </div>
             </div>
 
@@ -270,13 +270,13 @@ if(isset($_POST["enregistrer"])){
             <p>Somme en toutes lettres  <input type="text" id="somme_en_lettre" name="somme_en_lettre" required> </p>
 
             <!--  -->
-            <p>Date du versement ou du don : <input type="date"class="form-control"  name="date_versement" data-date-format="DD MMMM YYYY"></p>
+            <p>Date du versement ou du don : <input type="date"class="form-control"  name="date_versement" data-date-format="DD MMMM YYYY" required></p>
 
             <!-- CGI -->
             <p>Le bénéficiaire certifie sur l’honneur que les dons et versements qu’il reçoit ouvrent droit à la
             réduction d’impôt prévue à l’article (3) 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cgi" id="cg1" value="1">
+                    <input class="form-check-input" type="radio" name="cgi" id="cg1" value="1" required>
                     <label class="form-check-label" for="cg1">200 du CGI</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -292,7 +292,7 @@ if(isset($_POST["enregistrer"])){
             <!-- Forme du don  -->
             <p>Forme du don :
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="forme_du_don" id="forme1" value="1">
+                    <input class="form-check-input" type="radio" name="forme_du_don" id="forme1" value="1" required>
                     <label class="form-check-label" for="forme1">Acte authentique</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -312,7 +312,7 @@ if(isset($_POST["enregistrer"])){
             <!-- Nature du don  -->
             <p>Nature du don :
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="nature_du_don" id="nature1" value="1">
+                    <input class="form-check-input" type="radio" name="nature_du_don" id="nature1" value="1" required>
                     <label class="form-check-label" for="nature1">Numéraire</label>
                 </div>
                 <div class="form-check form-check-inline">
